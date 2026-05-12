@@ -5,3 +5,4 @@ services:
     image: nginx:1.25
     ports:
       - "8080:80"
+    container_name: enterprise-container 
