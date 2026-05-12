@@ -8,4 +8,4 @@ This project demonstrates:
 - SonarQube Integration
 - Open Policy Agent Policies
 
-## Infrastructure Setup Completed
+## Infrastructure Setup CompletedContributor refresh
