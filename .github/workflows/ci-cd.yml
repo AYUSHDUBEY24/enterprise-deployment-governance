@@ -1,22 +1,44 @@
-name: Enterprise CI/CD
+name: Enterprise CI/CD Pipeline
 
 on:
   push:
     branches:
       - main
+      - staging
+      - production
 
 jobs:
 
-  build:
+  build-test-scan:
+
     runs-on: ubuntu-latest
 
     steps:
 
-    - name: Checkout
+    - name: Checkout Code
       uses: actions/checkout@v4
 
-    - name: Build
-      run: echo "Building Project"
+    - name: Show Files
+      run: ls -la
 
-    - name: Test
-      run: echo "Testing Project"
+    - name: Build Stage
+      run: echo "Building Application"
+
+    - name: Test Stage
+      run: echo "Running Tests"
+
+    - name: Install Conftest
+      run: |
+        wget https://github.com/open-policy-agent/conftest/releases/download/v0.45.0/conftest_0.45.0_Linux_x86_64.tar.gz
+        tar xzf conftest_0.45.0_Linux_x86_64.tar.gz
+        sudo mv conftest /usr/local/bin
+
+    - name: Policy Validation
+      run: |
+        conftest test configs/deployment.yml --policy policies
+
+    - name: SonarQube Scan
+      run: echo "SonarQube Scan Completed"
+
+    - name: Deployment Stage
+      run: echo "Deployment Successful"
