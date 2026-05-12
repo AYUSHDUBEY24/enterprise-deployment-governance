@@ -1,0 +1,22 @@
+name: Enterprise CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Build
+      run: echo "Building Project"
+
+    - name: Test
+      run: echo "Testing Project"
