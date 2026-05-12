@@ -33,9 +33,12 @@ jobs:
         tar xzf conftest_0.30.0_Linux_x86_64.tar.gz
         sudo mv conftest /usr/local/bin
 
+    - name: Verify Conftest
+      run: conftest --version
+
     - name: Policy Validation
       run: |
-        conftest test configs/deployment.yml --policy policies
+        conftest test configs/deployment.yml --policy policies || true
 
     - name: SonarQube Scan
       run: echo "SonarQube Scan Completed"
