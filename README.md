@@ -7,6 +7,4 @@ This project demonstrates:
 - CI/CD Automation
 - SonarQube Integration
 - Open Policy Agent Policies
-
-## Infrastructure Setup Completed
-Project for monitoring system
+Project for authentication and monitoring system
